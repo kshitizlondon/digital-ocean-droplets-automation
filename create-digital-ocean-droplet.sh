@@ -22,7 +22,7 @@ REGION_NAME="Amsterdam 3"
 SIZE_NAME="512MB"
 IMAGE_NAME="Ubuntu 13.04 x64"
 
-REGION_ID=`curl -s "$BASE_URL/regions" -H "Authorization: Bearer $DIGOCEAN_KEY" | jq ".regions | map(select(.name==\"$REGION_NAME\"))"`
+REGION_ID=`curl -s "$BASE_URL/regions" -H "Authorization: Bearer $DIGOCEAN_KEY" | jq ".regions | map(select(.name==\"$REGION_NAME\"))[0].slug"`
 echo "ID of Region $REGION_NAME is $REGION_ID"
 
 #SIZE_ID=`curl -s "$BASE_URL/sizes" -H "Authorization: Bearer $DIGOCEAN_KEY" | jq ".sizes | map(select(.name==\"$SIZE_NAME\"))[0].id"`
@@ -40,7 +40,8 @@ DROPLET_NAME="droplet-$TIMESTAMP"
 
 echo "Creating new Droplet $DROPLET_NAME with these specifications..."
 
-curl -s "$BASE_URL/account/keys" -H "Authorization: Bearer $DIGOCEAN_KEY" -d '{"name":"$DROPLET_NAME","region":"nyc3","size":"512mb","image":"ubuntu-14-04-x64","ssh_keys":null,"backups":false,"ipv6":true,"user_data":null,"private_networking":null,"volumes": null}' "https://api.digitalocean.com/v2/droplets"
+#todo curl -s "$BASE_URL/account/keys" -H "Authorization: Bearer $DIGOCEAN_KEY" -d '{"name":"$DROPLET_NAME","region":"$REGION_ID","size":"512mb","image":"ubuntu-14-04-x64","ssh_keys":null,"backups":false,"ipv6":true,"user_data":null,"private_networking":null,"volumes": null}' "https://api.digitalocean.com/v2/droplets"
+
 RESULT=`curl -s "$BASE_URL/droplets/new?$AUTH&name=$DROPLET_NAME&size_id=$SIZE_ID&image_id=$IMAGE_ID&region_id=$REGION_ID&ssh_key_ids=$SSH_KEY_ID"`
 STATUS=`echo $RESULT | jq -r '.status'`
 echo "Status: $STATUS"
