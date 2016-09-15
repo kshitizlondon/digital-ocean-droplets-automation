@@ -1,0 +1,58 @@
+{
+  "sizes": [
+    {
+      "slug": "512mb",
+      "memory": 512,
+      "vcpus": 1,
+      "disk": 20,
+      "transfer": 1,
+      "price_monthly": 5,
+      "price_hourly": 0.00744,
+      "regions": [
+        "ams1",
+        "ams2",
+        "ams3",
+        "blr1",
+        "fra1",
+        "lon1",
+        "nyc1",
+        "nyc2",
+        "nyc3",
+        "sfo1",
+        "sfo2",
+        "sgp1",
+        "tor1"
+      ],
+      "available": true
+    },
+    {
+      "slug": "1gb",
+      "memory": 1024,
+      "vcpus": 1,
+      "disk": 30,
+      "transfer": 2,
+      "price_monthly": 10,
+      "price_hourly": 0.01488,
+      "regions": [
+        "ams1",
+        "ams2",
+        "ams3",
+        "blr1",
+        "fra1",
+        "lon1",
+        "nyc1",
+        "nyc2",
+        "nyc3",
+        "sfo1",
+        "sfo2",
+        "sgp1",
+        "tor1"
+      ],
+      "available": true
+    }
+  ],
+  "links": {},
+  "meta": {
+    "total": 14
+  }
+}
